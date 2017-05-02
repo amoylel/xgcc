@@ -1,2 +1,2 @@
 # xgcc
-简单的MVC框架
+简单的javaMVC框架和js框架,
