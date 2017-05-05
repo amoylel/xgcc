@@ -390,7 +390,7 @@ public abstract class DBModel<T extends DBModel<T>> implements Serializable {
 				}
 				sql.append(columnName);
 				sql.append(" as ");
-				sql.append(tables.getLable(columnName));
+				sql.append("`").append(tables.getLable(columnName)).append("`");
 				index++;
 			}
 			sql.append(" from ").append(tables.getTableName()).append(" where 1 = 1 ");
@@ -425,7 +425,7 @@ public abstract class DBModel<T extends DBModel<T>> implements Serializable {
 				}
 				sql.append(columnName);
 				sql.append(" as ");
-				sql.append(tables.getLable(columnName));
+				sql.append("`").append(tables.getLable(columnName)).append("`");
 				index++;
 			}
 			sql.append(" from ").append(tables.getTableName()).append(" where 1 = 1 ");
@@ -453,7 +453,7 @@ public abstract class DBModel<T extends DBModel<T>> implements Serializable {
 				}
 				sql.append(columnName);
 				sql.append(" as ");
-				sql.append(tables.getLable(columnName));
+				sql.append("`").append(tables.getLable(columnName)).append("`");
 				index++;
 			}
 			sql.append(" from ").append(tables.getTableName()).append(" where 1 = 1 ");
@@ -486,7 +486,7 @@ public abstract class DBModel<T extends DBModel<T>> implements Serializable {
 				}
 				sql.append(columnName);
 				sql.append(" as ");
-				sql.append(tables.getLable(columnName));
+				sql.append("`").append(tables.getLable(columnName)).append("`");
 				index++;
 			}
 			sql.append(" from ").append(tables.getTableName()).append(" where 1 = 1 ");
@@ -515,7 +515,7 @@ public abstract class DBModel<T extends DBModel<T>> implements Serializable {
 				}
 				sql.append(columnName);
 				sql.append(" as ");
-				sql.append(tables.getLable(columnName));
+				sql.append("`").append(tables.getLable(columnName)).append("`");
 				index++;
 			}
 			sql.append(" from ").append(tables.getTableName()).append(" where 1 = 1 ");
@@ -543,7 +543,7 @@ public abstract class DBModel<T extends DBModel<T>> implements Serializable {
 				}
 				sql.append(columnName);
 				sql.append(" as ");
-				sql.append(tables.getLable(columnName));
+				sql.append("`").append(tables.getLable(columnName)).append("`");
 				index++;
 			}
 			sql.append(" from ").append(tables.getTableName()).append(" where 1 = 1 ");
@@ -576,7 +576,7 @@ public abstract class DBModel<T extends DBModel<T>> implements Serializable {
 				}
 				sql.append(columnName);
 				sql.append(" as ");
-				sql.append(tables.getLable(columnName));
+				sql.append("`").append(tables.getLable(columnName)).append("`");
 				index++;
 			}
 			sql.append(" from ").append(tables.getTableName()).append(" where 1 = 1 ");
@@ -605,7 +605,7 @@ public abstract class DBModel<T extends DBModel<T>> implements Serializable {
 				}
 				sql.append(columnName);
 				sql.append(" as ");
-				sql.append(tables.getLable(columnName));
+				sql.append("`").append(tables.getLable(columnName)).append("`");
 				index++;
 			}
 			sql.append(" from ").append(tables.getTableName()).append(" where 1 = 1 ");
@@ -634,7 +634,7 @@ public abstract class DBModel<T extends DBModel<T>> implements Serializable {
 				}
 				sql.append(columnName);
 				sql.append(" as ");
-				sql.append(tables.getLable(columnName));
+				sql.append("`").append(tables.getLable(columnName)).append("`");
 				index++;
 			}
 			sql.append(" from ").append(tables.getTableName()).append(" where 1 = 1 ");
@@ -668,7 +668,7 @@ public abstract class DBModel<T extends DBModel<T>> implements Serializable {
 				}
 				sql.append(columnName);
 				sql.append(" as ");
-				sql.append(tables.getLable(columnName));
+				sql.append("`").append(tables.getLable(columnName)).append("`");
 				index++;
 			}
 			sql.append(" from ").append(tables.getTableName()).append(" where 1 = 1 ");

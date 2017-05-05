@@ -27,6 +27,9 @@ public class StreamRender implements IRender {
 		OutputStream outputStream = null;
 		try {
 			inputStream = model.getInputStream();
+			if(inputStream == null) {
+				return;
+			}
 			outputStream = response.getOutputStream();
 			byte[] buffer = new byte[1024];
 			int length = 0;
