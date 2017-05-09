@@ -11,7 +11,7 @@ import javax.servlet.http.Part;
 import com.xcc.db.IDB;
 import com.xcc.web.DefaultRequest;
 import com.xcc.web.FilePart;
-import com.xcc.web.entity.USession;
+import com.xcc.web.entity.IUser;
 import com.xcc.web.model.IModel;
 
 public class EditorBinding {
@@ -28,7 +28,7 @@ public class EditorBinding {
 
 	private EditorBinding() {
 		editors.put(String.class, new StringEditor());
-		editors.put(USession.class, new USessionEditor());
+		editors.put(IUser.class, new IUserEditor());
 		editors.put(java.util.Date.class, new DateEditor());
 
 		editors.put(HttpSession.class, new SessionEditor());

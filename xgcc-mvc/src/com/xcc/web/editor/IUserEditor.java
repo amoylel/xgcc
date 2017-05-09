@@ -9,18 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.xcc.web.DefaultRequest;
 import com.xcc.web.core.ActionParameter;
-import com.xcc.web.entity.USession;
+import com.xcc.web.entity.IUser;
 
 /**
  * com.xsy.web.editor.LoginSessionEditor.java
  * @author XChao
  */
-public class USessionEditor implements IEditor {
+public class IUserEditor implements IEditor {
 
 	@Override
 	public Object getParamValue(String paramName, Class<?> paramType, DefaultRequest request,
 		HttpServletResponse response) throws Exception {
-		Object value = request.getSession().getAttribute(USession.XUSESSION_KEY);
+		Object value = request.getSession().getAttribute(IUser.IUSER_KEY);
 		request.setAttribute(ActionParameter.PARAMETER_KEY + paramName, value);
 		return value;
 	}

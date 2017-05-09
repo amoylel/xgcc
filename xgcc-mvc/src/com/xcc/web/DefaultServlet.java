@@ -28,7 +28,7 @@ import com.xcc.web.core.DefaultInvocation;
 import com.xcc.web.core.IApplicationContext;
 import com.xcc.web.core.XInitContext;
 import com.xcc.web.editor.ParamBindException;
-import com.xcc.web.entity.USession;
+import com.xcc.web.entity.IUser;
 import com.xcc.web.model.DefaultModel;
 import com.xcc.web.model.IModel;
 
@@ -64,7 +64,7 @@ public class DefaultServlet extends HttpServlet {
 			// 创建Mode对象
 			IModel model = new DefaultModel();
 			// 将 Model 对象存入 HttpServletRequest中
-			request.setAttribute(IModel.MODEL_KEY, model);
+			request.setAttribute(IModel.IMODEL_KEY, model);
 			// 获取ActionPorxy 对象
 			ActionPorxy porxy = context.getAction(request.getRequestURI());
 			// 如果Action代理对象为空， 表示页面不存在，报出404错误
@@ -97,7 +97,7 @@ public class DefaultServlet extends HttpServlet {
 	protected String loginInterceptor(ActionPorxy porxy, IModel model, DefaultRequest request,
 		HttpServletResponse response) throws Exception {
 		try {
-			USession usessin = (USession) request.getSession().getAttribute(USession.XUSESSION_KEY);
+			IUser usessin = (IUser) request.getSession().getAttribute(IUser.IUSER_KEY);
 			if(porxy.getAction().permiss() > 0 && usessin == null) {
 				if(porxy.getAction().value() == View.json) {
 					model.setError(600).setMessage("Not login in error. ");

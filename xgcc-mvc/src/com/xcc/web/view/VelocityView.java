@@ -23,7 +23,7 @@ import org.apache.velocity.runtime.log.NullLogChute;
 import com.xcc.web.DefaultRequest;
 import com.xcc.web.core.IApplicationContext;
 import com.xcc.web.core.XInitContext;
-import com.xcc.web.entity.USession;
+import com.xcc.web.entity.IUser;
 import com.xcc.web.model.IModel;
 
 /**
@@ -57,7 +57,7 @@ public class VelocityView implements IView {
 			}
 			data.put("sysBasePath", context.getWebRootPath());
 			data.put("VH", VMUtils.class);
-			data.put("usession", request.getSession().getAttribute(USession.XUSESSION_KEY));
+			data.put("usession", request.getSession().getAttribute(IUser.IUSER_KEY));
 			Template template = velocityEngine.getTemplate(viewPath);
 			VelocityContext context = new VelocityContext(data);
 			writer = response.getWriter();
@@ -76,7 +76,7 @@ public class VelocityView implements IView {
 		try {
 			data.put("sysBasePath", context.getWebRootPath());
 			data.put("VH", VMUtils.class);
-			data.put("usession", request.getSession().getAttribute(USession.XUSESSION_KEY));
+			data.put("usession", request.getSession().getAttribute(IUser.IUSER_KEY));
 			VelocityContext context = new VelocityContext(data);
 			writer = response.getWriter();
 			velocityEngine.evaluate(context, writer, "", value);

@@ -15,7 +15,7 @@ import java.util.Set;
  * @author XChao
  */
 public interface IModel {
-	public static final String MODEL_KEY = "REQUEST_MODEL_KEY";
+	public static final String IMODEL_KEY = "REQUEST_IMODEL_KEY";
 
 	/**
 	 * 设置返回错误码

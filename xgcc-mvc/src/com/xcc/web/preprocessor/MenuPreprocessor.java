@@ -13,25 +13,25 @@ import org.apache.commons.lang.StringUtils;
 import com.xcc.web.core.ActionPorxy;
 import com.xcc.web.core.IApplicationContext;
 import com.xcc.web.core.XInitContext;
-import com.xcc.web.entity.Menu;
+import com.xcc.web.entity.IMenu;
 
 /**
  * com.xcc.web.hander.PermissHandler.java
  * @author XChao
  * @since 0.3.0
  */
-public abstract class MenuPreprocessor implements IPreprocessor {
-	protected final Map<Integer, Menu> MENU_INFO = new HashMap<Integer, Menu>();
+public abstract class MenuPreprocessor extends DBPreprocessor {
+	protected final Map<Integer, IMenu> MENU_INFO = new HashMap<Integer, IMenu>();
 	protected IApplicationContext context = XInitContext.getContext();
 
-	public void process() {
+	public void dbProcess() {
 		// 初始化菜单
 		for (String actionPorxyName : context.getActionMap().keySet()) {
 			ActionPorxy actionPorxy = context.getAction(actionPorxyName);
 			if(actionPorxy.getAction().menuid() > 0 && actionPorxy.getAction().permiss() > 0) {
-				Menu menu = MENU_INFO.get(actionPorxy.getAction().menuid());
+				IMenu menu = MENU_INFO.get(actionPorxy.getAction().menuid());
 				if(menu == null) {
-					menu = new Menu();
+					menu = this.createMenu();
 					MENU_INFO.put(actionPorxy.getAction().menuid(), menu);
 				}
 				if(actionPorxy.getAction().ismenu()) {
@@ -53,8 +53,10 @@ public abstract class MenuPreprocessor implements IPreprocessor {
 				}
 			}
 		}
-		this.MenuProcess();
+		this.menuProcess();
 	}
 
-	protected abstract void MenuProcess();
+	protected abstract IMenu createMenu();
+
+	protected abstract void menuProcess();
 }

@@ -33,7 +33,13 @@ public class PagesRender implements IRender {
 			throw new RuntimeException("********  Not found Page. ***********");
 		}
 		if(viewPath.trim().startsWith("f:")) {
-			request.getRequestDispatcher("/" + viewPath.trim().substring(2).trim()).forward(request, response);
+			StringBuilder dispatcher = new StringBuilder();
+			viewPath = viewPath.trim().substring(2).trim();
+			if(!viewPath.startsWith("/")) {
+				dispatcher.append("/");
+			}
+			dispatcher.append(viewPath);
+			request.getRequestDispatcher(dispatcher.toString()).forward(request, response);
 			return;
 		}
 		if(viewPath.trim().startsWith("r:")) {
@@ -42,7 +48,11 @@ public class PagesRender implements IRender {
 				response.sendRedirect(viewPath);
 				return;
 			}
-			response.sendRedirect(request.getServletContext().getContextPath() + "/" + viewPath);
+			StringBuilder redirect = new StringBuilder();
+			if(!viewPath.startsWith("/")) {
+				redirect.append(request.getServletContext().getContextPath() + "/");
+			}
+			response.sendRedirect(redirect.append(viewPath).toString());
 			return;
 		}
 		porxy.getViewPorxy().execute(model, viewPath, request, response);

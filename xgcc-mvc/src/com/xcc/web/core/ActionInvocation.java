@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.xcc.db.IDB;
 import com.xcc.web.DefaultRequest;
 import com.xcc.web.annotaion.Action;
-import com.xcc.web.entity.USession;
+import com.xcc.web.entity.IUser;
 import com.xcc.web.model.IModel;
 
 /**
@@ -80,7 +80,7 @@ public interface ActionInvocation {
 	 * 获取用户登录Session信息
 	 * @return
 	 */
-	public USession getUSession();
+	public IUser getUSession();
 
 	/**
 	 * 获取Action的参数信息

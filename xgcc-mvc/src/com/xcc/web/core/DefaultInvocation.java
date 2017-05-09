@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.xcc.db.IDB;
 import com.xcc.web.DefaultRequest;
 import com.xcc.web.annotaion.Action;
-import com.xcc.web.entity.USession;
+import com.xcc.web.entity.IUser;
 import com.xcc.web.interceptor.InterceptorPorxy;
 import com.xcc.web.model.IModel;
 
@@ -63,15 +63,15 @@ public class DefaultInvocation implements ActionInvocation {
 	}
 
 	public IModel getIModel() {
-		return (IModel) this.request.getAttribute(IModel.MODEL_KEY);
+		return (IModel) this.request.getAttribute(IModel.IMODEL_KEY);
 	}
 
 	public IDB getDB(String name) {
 		return (IDB) this.getParameter(name);
 	}
 
-	public USession getUSession() {
-		return (USession) this.getSession().getAttribute(USession.XUSESSION_KEY);
+	public IUser getUSession() {
+		return (IUser) this.getSession().getAttribute(IUser.IUSER_KEY);
 	}
 
 	public ActionParameter getParameters() {

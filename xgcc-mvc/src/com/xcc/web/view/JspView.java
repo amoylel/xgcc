@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.xcc.web.DefaultRequest;
 import com.xcc.web.core.IApplicationContext;
 import com.xcc.web.core.XInitContext;
-import com.xcc.web.entity.USession;
+import com.xcc.web.entity.IUser;
 import com.xcc.web.model.IModel;
 
 /**
@@ -29,7 +29,7 @@ public class JspView implements IView {
 			request.setAttribute(key, model.getData(key));
 		}
 		request.setAttribute("sysBasePath", context.getWebRootPath());
-		request.setAttribute("usession", request.getSession().getAttribute(USession.XUSESSION_KEY));
+		request.setAttribute("usession", request.getSession().getAttribute(IUser.IUSER_KEY));
 		request.getRequestDispatcher("/WEB-INF/" + viewPath).forward(request, response);
 	}
 

@@ -11,8 +11,8 @@ import com.xcc.web.annotaion.Action;
 import com.xcc.web.core.ActionInvocation;
 import com.xcc.web.core.IApplicationContext;
 import com.xcc.web.core.XInitContext;
-import com.xcc.web.entity.Role;
-import com.xcc.web.entity.USession;
+import com.xcc.web.entity.IRole;
+import com.xcc.web.entity.IUser;
 import com.xcc.web.model.IModel;
 import com.xcc.web.preprocessor.MenuPreprocessor;
 
@@ -31,12 +31,12 @@ public abstract class PermissInterceptor implements Interceptor {
 	public String intercept(ActionInvocation invocation) throws Exception {
 		Action action = invocation.getAction();
 		if(action != null && action.permiss() > 0) {
-			USession usession = (USession) invocation.getUSession();
+			IUser usession = (IUser) invocation.getUSession();
 			if(usession == null) {
 				throw new RuntimeException("对不起! 您没有该功能的操作权限.");
 			}
 			if(action.menuid() > 0) {
-				List<Role> userRoles = usession.getRoles();
+				List<IRole> userRoles = usession.getRoles();
 				if(userRoles == null || userRoles.size() == 0) {
 					throw new RuntimeException("对不起! 您没有该功能的操作权限.");
 				}
@@ -48,5 +48,5 @@ public abstract class PermissInterceptor implements Interceptor {
 		return invocation.invoke();
 	}
 
-	protected abstract boolean validate(ActionInvocation invocation, USession usession, Action action, IModel model);
+	protected abstract boolean validate(ActionInvocation invocation, IUser usession, Action action, IModel model);
 }
